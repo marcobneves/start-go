@@ -26,14 +26,14 @@ func main() {
 		Titular:       clienteMarco,
 		NumeroAgencia: 1788,
 		NumeroConta:   12354,
-		Saldo:         1500,
 	}
 	contaTalita := contas.ContaCorrente{
 		Titular:       clienteTalita,
 		NumeroAgencia: 1754,
 		NumeroConta:   654321,
-		Saldo:         100,
 	}
+	contaMarco.Depositar(1500)
+	contaTalita.Depositar(1000)
 
 	// // Account operations
 	fmt.Println(contaMarco.Sacar(100.))
@@ -42,7 +42,7 @@ func main() {
 
 	// // Example send money
 	fmt.Println(contaMarco.Transferir(500, &contaTalita))
-	fmt.Println("Saldo Marco:", contaMarco.Saldo)
-	fmt.Println("Saldo Talita:", contaTalita.Saldo)
+	fmt.Println("Saldo Marco:", contaMarco.ObterSaldo())
+	fmt.Println("Saldo Talita:", contaTalita.ObterSaldo())
 
 }
