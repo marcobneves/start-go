@@ -49,4 +49,10 @@ func main() {
 	contaTest6.titular = "Tainá Queiroz"
 	fmt.Println(*contaTest5 == *contaTest6)
 
+	// Monstrando espaço alocado
+	fmt.Println(&contaTest6)
+
+	// Monstrando valor alocado
+	fmt.Println(contaTest6)
+
 }
