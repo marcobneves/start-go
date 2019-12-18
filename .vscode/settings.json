@@ -1,0 +1,11 @@
+{
+    "go.useLanguageServer": true,
+    "go.formatTool": "gofmt",
+    "go.enableCodeLens": {
+        "references": true,
+        "runtest": true
+    },    
+    "go.autocompleteUnimportedPackages": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.lintTool": "golint"
+}
