@@ -6,6 +6,15 @@ import (
 	"start-go/contas"
 )
 
+//PagarBoleto Pay
+func PagarBoleto(conta VerificarConta, valorBoleto float64) {
+	conta.Sacar(valorBoleto)
+}
+
+type VerificarConta interface {
+	Sacar(valor float64) string
+}
+
 func main() {
 
 	//Create Client
@@ -60,5 +69,9 @@ func main() {
 	fmt.Println(contaMarco.Transferir(500, &contaTalita))
 	fmt.Println("Saldo Marco:", contaMarco.ObterSaldo())
 	fmt.Println("Saldo Talita:", contaTalita.ObterSaldo())
+
+	//Pay
+	PagarBoleto(&contaMarco, 145)
+	fmt.Println("Saldo Marco:", contaMarco.ObterSaldo())
 
 }
