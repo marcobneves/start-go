@@ -26,12 +26,12 @@ func (c *ContaCorrente) Sacar(valorSaque float64) string {
 }
 
 //Depositar Add money
-func (c *ContaCorrente) Depositar(valorDeposito float64) string {
+func (c *ContaCorrente) Depositar(valorDeposito float64) (string, float64) {
 	if valorDeposito > 0 {
 		c.saldo += valorDeposito
-		return "Deposito realizado"
+		return "Deposito realizado", c.saldo
 	} else {
-		return "Valor inválido"
+		return "Valor inválido", c.saldo
 	}
 }
 
@@ -41,7 +41,8 @@ func main() {
 	contaMarco.saldo = 1445.5
 
 	fmt.Println(contaMarco.Sacar(1000.))
-	fmt.Println(contaMarco.Depositar(245.))
+	status, value := contaMarco.Depositar(245.)
+	fmt.Println(status, value)
 
 	fmt.Println("Saldo:", contaMarco.saldo)
 }
