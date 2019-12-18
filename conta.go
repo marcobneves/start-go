@@ -35,14 +35,30 @@ func (c *ContaCorrente) Depositar(valorDeposito float64) (string, float64) {
 	}
 }
 
-func main() {
-	contaMarco := ContaCorrente{}
-	contaMarco.titular = "Marco Barroso"
-	contaMarco.saldo = 1445.5
+// Transferir Money
+func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino *ContaCorrente) string {
+	if c.saldo > valorTransferencia && valorTransferencia > 0 {
+		c.saldo -= valorTransferencia
+		contaDestino.Depositar(valorTransferencia)
+		return "Transferencia efetuada com sucesso"
+	} else {
+		return "não foi possivel transferir"
+	}
+}
 
-	fmt.Println(contaMarco.Sacar(1000.))
+func main() {
+	//Create account
+	contaMarco := ContaCorrente{titular: "Marco Barroso", saldo: 1500}
+	contaTalita := ContaCorrente{titular: "Talita Queiroz", saldo: 1200}
+
+	// Account operations
+	fmt.Println(contaMarco.Sacar(100.))
 	status, value := contaMarco.Depositar(245.)
 	fmt.Println(status, value)
 
-	fmt.Println("Saldo:", contaMarco.saldo)
+	// Example send money
+	fmt.Println(contaMarco.Transferir(500, &contaTalita))
+	fmt.Println("Saldo Marco:", contaMarco.saldo)
+	fmt.Println("Saldo Talita:", contaTalita.saldo)
+
 }
