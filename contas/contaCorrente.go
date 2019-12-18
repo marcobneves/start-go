@@ -1,8 +1,12 @@
 package contas
 
+import (
+	"start-go/clientes"
+)
+
 //ContaCorrente structure
 type ContaCorrente struct {
-	Titular       string
+	Titular       clientes.Titular
 	NumeroAgencia int
 	NumeroConta   int
 	Saldo         float64
