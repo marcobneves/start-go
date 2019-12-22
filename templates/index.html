@@ -1,0 +1,48 @@
+{{ define "Index" }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Start Go</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>CPF</td>
+                <td>Profissão</td>
+                <td>Agência</td>
+                <td>Conta</td>
+                <td>Saldo</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .}}
+            <tr>
+                <td>{{.Nome}}</td>
+                <td>{{.Cpf}}</td>
+                <td>{{.Profissao}}</td>
+                <td>
+                    <!-- {{.NumeroAgencia}} -->
+                </td>
+                <td>
+                    <!-- {{.NumeroConta}} -->
+                </td>
+                <td>
+                    <!-- {{.ObterSaldo}} -->
+                </td>
+            </tr>
+            {{end}}
+            
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+{{end}}

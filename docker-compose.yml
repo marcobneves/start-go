@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+    app:
+      build: 
+        dockerfile: ./config/Dockerfile
+        context: .
+      image: marcobneves/my-image-go
+      container_name: my-container-app-go
+      ports: 
+        - "8000:8000"
+      networks: 
+        - my-network-go
+      depends_on: 
+        - postgres  
+
+    postgres:
+        image: postgres
+        environment: 
+          POSTGRES_PASSWORD: "Postgres2019!"
+        container_name: postgres-db
+        ports:
+          - "15432:5432"
+        volumes: 
+          - /home/marcobarroso/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
+        networks: 
+          - my-network-go
+
+    pgadmin:
+      image: dpage/pgadmin4
+      environment: 
+        PGADMIN_DEFAULT_EMAIL: "marcobneves@gmail.com"
+        PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+      ports: 
+        - "16543:80"
+      depends_on: 
+        - postgres
+      networks: 
+        - my-network-go
+
+networks: 
+  my-network-go:
+    driver: bridge

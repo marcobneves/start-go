@@ -6,9 +6,20 @@ import (
 
 //ContaCorrente structure
 type ContaCorrente struct {
-	Titular       clientes.Titular
+	Titular                    clientes.Titular
 	NumeroAgencia, NumeroConta int
-	saldo         float64
+	saldo                      float64
+}
+
+//Criar new cliente
+func Criar(Titular clientes.Titular, agencia int, conta int) ContaCorrente {
+
+	Conta := ContaCorrente{
+		Titular:       Titular,
+		NumeroAgencia: agencia,
+		NumeroConta:   conta,
+	}
+	return Conta
 }
 
 //Sacar withdraw money
@@ -48,6 +59,6 @@ func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino *Con
 }
 
 // ObterSaldo get value
-func (c *ContaCorrente) ObterSaldo () float64 {
+func (c *ContaCorrente) ObterSaldo() float64 {
 	return c.saldo
 }
